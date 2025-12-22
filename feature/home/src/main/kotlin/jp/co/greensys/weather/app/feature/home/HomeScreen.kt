@@ -4,18 +4,28 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.WbSunny
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -33,11 +43,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -46,8 +59,6 @@ import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import jp.co.greensys.weather.app.core.designsystem.component.ActionIconSet
-import jp.co.greensys.weather.app.core.designsystem.component.MenuSet
 import jp.co.greensys.weather.app.core.designsystem.component.WeatherButton
 import jp.co.greensys.weather.app.core.designsystem.component.WeatherLoading
 import jp.co.greensys.weather.app.core.designsystem.component.WeatherSnackbar
@@ -125,6 +136,17 @@ internal fun HomeScreen(
     )
 }
 
+private data class ForecastDayUi(
+    val dayName: String,
+    val temperature: String,
+)
+private val forecastDays = listOf(
+    ForecastDayUi("Monday", "32°C"),
+    ForecastDayUi("Tuesday", "30°C"),
+    ForecastDayUi("Wednesday", "29°C"),
+    ForecastDayUi("Thursday", "31°C"),
+    ForecastDayUi("Friday", "33°C"),
+)
 @OptIn(ExperimentalPermissionsApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -147,13 +169,6 @@ fun HomeScreen(
         topBar = {
             WeatherTopAppBar(
                 titleRes = R.string.home_title,
-                actionIcon = ActionIconSet(
-                    icon = WeatherIcons.More,
-                    contentDescription = stringResource(id = UiR.string.ui_content_description_menu),
-                    menu = listOf(
-                        MenuSet(textRes = UiR.string.ui_oss, onClick = onOssClick),
-                    ),
-                ),
             )
         },
         snackbarHost = {
@@ -165,7 +180,7 @@ fun HomeScreen(
         modifier = modifier,
     ) { innerPadding ->
         Box(
-            contentAlignment = Alignment.Center,
+            contentAlignment = Alignment.TopCenter,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues = innerPadding),
@@ -183,6 +198,13 @@ fun HomeScreen(
                     leadingIcon = { Icon(imageVector = WeatherIcons.Gps, contentDescription = null) },
                     modifier = Modifier.fillMaxWidth(),
                 )
+
+                forecastDays.forEach { day ->
+                    ForecastDayCard(
+                        day = day,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
             }
         }
     }
@@ -218,6 +240,54 @@ fun HomeScreen(
         )
     }
 }
+
+@Composable
+private fun ForecastDayCard(
+    day: ForecastDayUi,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 6.dp
+        ),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Text(
+                text = day.dayName,
+                style = MaterialTheme.typography.titleMedium,
+                color = Color.Black
+            )
+
+            Icon(
+                imageVector = Icons.Filled.WbSunny,
+                contentDescription = "Sunny",
+                tint = Color(0xFFFFC107),
+                modifier = Modifier.size(28.dp),
+            )
+
+            Text(
+                text = day.temperature,
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black
+            )
+        }
+    }
+}
+
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
