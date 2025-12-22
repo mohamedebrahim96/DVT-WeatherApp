@@ -1,8 +1,8 @@
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import com.android.build.gradle.LibraryExtension
-import com.dvt.weatherapp.weather.app.configureKotlinAndroid
-import com.dvt.weatherapp.weather.app.disableUnnecessaryAndroidTests
-import com.dvt.weatherapp.weather.app.libs
+import jp.co.greensys.weather.app.configureKotlinAndroid
+import jp.co.greensys.weather.app.disableUnnecessaryAndroidTests
+import jp.co.greensys.weather.app.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

@@ -1,4 +1,4 @@
-import com.dvt.weatherapp.weather.app.libs
+import jp.co.greensys.weather.app.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

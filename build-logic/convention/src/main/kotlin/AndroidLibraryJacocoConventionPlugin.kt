@@ -1,6 +1,6 @@
 import com.android.build.api.dsl.LibraryExtension
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
-import com.dvt.weatherapp.weather.app.configureJacoco
+import jp.co.greensys.weather.app.configureJacoco
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType

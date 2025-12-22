@@ -14,7 +14,16 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 private interface RetrofitWeatherNetworkApi {
-
+    // 都道府県名から天気予報
+    @GET("data/2.5/forecast")
+    suspend fun fetchForecastByName(
+        @Query("q") cityName: String,
+        @Query("appid") appid: String = BuildConfig.WEATHER_API_KEY,
+        @Query("units") units: String? = "metric",
+        @Query("lang") lang: String = "ja",
+        // 8つ分の取得
+        @Query("cnt") cnt: Int = 8,
+    ): NetworkForecastData
 
     // 位置情報から天気予報
     @GET("data/2.5/forecast")

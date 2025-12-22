@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "com.dvt.weatherapp.weather.app.buildlogic"
+group = "jp.co.greensys.weather.app.buildlogic"
 
 // Configure the build-logic plugins to target JDK 17
 // This matches the JDK used to build the project, and is not related to what is running on device.

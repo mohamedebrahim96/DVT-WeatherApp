@@ -1,4 +1,4 @@
-import com.dvt.weatherapp.weather.app.configureKotlinJvm
+import jp.co.greensys.weather.app.configureKotlinJvm
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

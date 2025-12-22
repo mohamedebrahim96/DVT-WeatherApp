@@ -1,9 +1,9 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
-import com.dvt.weatherapp.weather.app.configureBadgingTasks
-import com.dvt.weatherapp.weather.app.configureKotlinAndroid
-import com.dvt.weatherapp.weather.app.libs
+import jp.co.greensys.weather.app.configureBadgingTasks
+import jp.co.greensys.weather.app.configureKotlinAndroid
+import jp.co.greensys.weather.app.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

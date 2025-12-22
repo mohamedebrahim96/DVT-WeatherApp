@@ -1,4 +1,4 @@
-import com.dvt.weatherapp.weather.app.BuildType
+import jp.co.greensys.weather.app.BuildType
 
 plugins {
     alias(libs.plugins.weather.app.android.application)
@@ -9,50 +9,43 @@ plugins {
 }
 
 android {
-    namespace = "com.dvt.weatherapp"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "jp.co.greensys.weather.app"
 
     defaultConfig {
-        applicationId = "com.dvt.weatherapp"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = "jp.co.greensys.weather.app"
+        versionCode = libs.versions.appVersionCode.get().toInt()
+        versionName = libs.versions.appVersionName.get()
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix = BuildType.DEBUG.applicationIdSuffix
+        }
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isMinifyEnabled = true
+            // fake signingConfig
+            signingConfig = signingConfigs.named("debug").get()
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
 
-
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.14"
-    }
+    buildFeatures { buildConfig = true }
 }
 
 dependencies {
-
+    implementation(projects.core.common)
+    implementation(projects.core.data)
+    implementation(projects.core.designsystem)
+    implementation(projects.core.domain)
+    implementation(projects.core.ui)
+    implementation(projects.feature.home)
+    implementation(projects.feature.select)
 
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
@@ -69,7 +62,6 @@ dependencies {
 
     kspTest(libs.hilt.compiler)
 }
-
 
 dependencyGuard {
     configuration("releaseRuntimeClasspath")
