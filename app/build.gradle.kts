@@ -1,6 +1,9 @@
+import com.dvt.weatherapp.weather.app.BuildType
+
 plugins {
     alias(libs.plugins.weather.app.android.application)
     alias(libs.plugins.weather.app.android.application.compose)
+    alias(libs.plugins.weather.app.android.application.jacoco)
     alias(libs.plugins.weather.app.hilt)
     alias(libs.plugins.google.oss.licenses)
 }

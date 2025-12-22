@@ -16,7 +16,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import jp.co.greensys.weather.app.navigation.WeatherNavHost
+import com.dvt.weatherapp.weather.app.navigation.WeatherNavHost
 
 @Composable
 fun WeatherApp(
