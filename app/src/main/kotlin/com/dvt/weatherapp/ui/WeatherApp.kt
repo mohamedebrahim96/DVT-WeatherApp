@@ -1,5 +1,11 @@
 package com.dvt.weatherapp.ui
-
+/**
+ * Created by @mohamedebrahim96
+ * Email: ebrahimm131@gmail.com
+ * Website: https://mohamedebrahim96.com/
+ * <p>
+ * Created on 22/12/2025
+ */
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.consumeWindowInsets

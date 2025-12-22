@@ -9,14 +9,10 @@ import androidx.compose.runtime.Composable
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContent {
-            HelloWorld()
-        }
-    }
-}
 
-@Composable
-fun HelloWorld() {
-    Text(text = "Hello World")
+        splashScreen.setKeepOnScreenCondition {
+            false
+        }
 }
