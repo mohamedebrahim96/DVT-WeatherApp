@@ -185,7 +185,10 @@ fun HomeScreen(
                 .fillMaxSize()
                 .padding(paddingValues = innerPadding),
         ) {
-            Column(modifier = Modifier.width(intrinsicSize = IntrinsicSize.Max)) {
+            Column(modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding)   // system / top bar
+                .padding(10.dp) ) {
                 WeatherButton(
                     onClick = onSelectClick,
                     text = { Text(text = stringResource(id = R.string.home_to_select)) },
