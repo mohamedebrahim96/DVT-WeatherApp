@@ -1,12 +1,12 @@
-package jp.co.greensys.weather.app.feature.home
+package com.dvt.greensys.weather.app.feature.home
 
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import jp.co.greensys.weather.app.core.common.result.Result
-import jp.co.greensys.weather.app.core.domain.usecase.GetForecastDataByCoordUseCase
-import jp.co.greensys.weather.app.core.model.Coord
-import jp.co.greensys.weather.app.core.testing.util.MainDispatcherRule
+import com.dvt.greensys.weather.app.core.common.result.Result
+import com.dvt.greensys.weather.app.core.domain.usecase.GetForecastDataByCoordUseCase
+import com.dvt.greensys.weather.app.core.model.Coord
+import com.dvt.greensys.weather.app.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher

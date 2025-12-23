@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app.core.ui.component
+package com.dvt.greensys.weather.app.core.ui.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -20,17 +20,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.co.greensys.weather.app.core.common.util.toString
-import com.co.greensys.weather.app.core.designsystem.component.DynamicAsyncImage
-import com.co.greensys.weather.app.core.designsystem.theme.Blue
-import com.co.greensys.weather.app.core.designsystem.theme.Red
-import com.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import com.co.greensys.weather.app.core.designsystem.theme.dimens
-import com.co.greensys.weather.app.core.model.Forecast
-import com.co.greensys.weather.app.core.model.ForecastData
-import com.co.greensys.weather.app.core.ui.LocalTimeZone
-import com.co.greensys.weather.app.core.ui.R
-import com.co.greensys.weather.app.core.ui.mock.PreviewForecastData
+import com.dvt.greensys.weather.app.core.common.util.toString
+import com.dvt.greensys.weather.app.core.designsystem.component.DynamicAsyncImage
+import com.dvt.greensys.weather.app.core.designsystem.theme.Blue
+import com.dvt.greensys.weather.app.core.designsystem.theme.Red
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.designsystem.theme.dimens
+import com.dvt.greensys.weather.app.core.model.Forecast
+import com.dvt.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.ui.LocalTimeZone
+import com.dvt.greensys.weather.app.core.ui.R
+import com.dvt.greensys.weather.app.core.ui.mock.PreviewForecastData
 
 @Composable
 fun DetailContent(

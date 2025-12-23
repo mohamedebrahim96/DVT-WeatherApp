@@ -1,14 +1,14 @@
-package com.co.greensys.weather.app.core.designsystem
+package com.dvt.greensys.weather.app.core.designsystem
 
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import dagger.hilt.android.testing.HiltTestApplication
-import com.co.greensys.weather.app.core.designsystem.component.ActionIconSet
-import com.co.greensys.weather.app.core.designsystem.component.WeatherTopAppBar
-import com.co.greensys.weather.app.core.designsystem.icon.WeatherIcons
-import com.co.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
-import com.co.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
+import com.dvt.greensys.weather.app.core.designsystem.component.ActionIconSet
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherTopAppBar
+import com.dvt.greensys.weather.app.core.designsystem.icon.WeatherIcons
+import com.dvt.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
+import com.dvt.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
 import org.junit.Rule
 import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith

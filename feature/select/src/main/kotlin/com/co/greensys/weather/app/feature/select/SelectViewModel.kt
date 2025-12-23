@@ -1,11 +1,11 @@
-package jp.co.greensys.weather.app.feature.select
+package com.dvt.greensys.weather.app.feature.select
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import jp.co.greensys.weather.app.core.common.result.Result
-import jp.co.greensys.weather.app.core.domain.usecase.GetForecastDataByNameUseCase
-import jp.co.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.common.result.Result
+import com.dvt.greensys.weather.app.core.domain.usecase.GetForecastDataByNameUseCase
+import com.dvt.greensys.weather.app.core.model.ForecastData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow

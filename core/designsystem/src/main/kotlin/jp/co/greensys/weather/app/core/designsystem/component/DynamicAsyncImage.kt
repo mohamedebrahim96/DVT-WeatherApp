@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.designsystem.component
+package com.dvt.greensys.weather.app.core.designsystem.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImagePainter.State.Error
 import coil3.compose.rememberAsyncImagePainter
-import jp.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
 
 @Composable
 fun DynamicAsyncImage(

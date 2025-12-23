@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.feature.select
+package com.dvt.greensys.weather.app.feature.select
 
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -22,17 +22,17 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import jp.co.greensys.weather.app.core.designsystem.component.ActionIconSet
-import jp.co.greensys.weather.app.core.designsystem.component.MenuSet
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherLoading
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherTopAppBar
-import jp.co.greensys.weather.app.core.designsystem.icon.WeatherIcons
-import jp.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import jp.co.greensys.weather.app.core.ui.component.DetailContent
-import jp.co.greensys.weather.app.core.ui.component.ErrorDialog
-import jp.co.greensys.weather.app.feature.select.component.CityItem
-import jp.co.greensys.weather.app.feature.select.preview.SelectPreviewParameterProvider
-import jp.co.greensys.weather.app.core.ui.R as UiR
+import com.dvt.greensys.weather.app.core.designsystem.component.ActionIconSet
+import com.dvt.greensys.weather.app.core.designsystem.component.MenuSet
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherLoading
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherTopAppBar
+import com.dvt.greensys.weather.app.core.designsystem.icon.WeatherIcons
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.ui.component.DetailContent
+import com.dvt.greensys.weather.app.core.ui.component.ErrorDialog
+import com.dvt.greensys.weather.app.feature.select.component.CityItem
+import com.dvt.greensys.weather.app.feature.select.preview.SelectPreviewParameterProvider
+import com.dvt.greensys.weather.app.core.ui.R as UiR
 
 @Composable
 internal fun SelectScreen(

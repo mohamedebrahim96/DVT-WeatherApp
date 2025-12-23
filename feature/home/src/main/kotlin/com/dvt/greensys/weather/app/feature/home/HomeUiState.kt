@@ -1,6 +1,6 @@
-package jp.co.greensys.weather.app.feature.home
+package com.dvt.greensys.weather.app.feature.home
 
-import jp.co.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.model.ForecastData
 
 sealed interface HomeUiState {
     data object Init : HomeUiState

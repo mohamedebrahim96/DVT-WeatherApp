@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "jp.co.greensys.weather.app.core.screenshottesting"
+    namespace = "com.dvt.greensys.weather.app.core.screenshottesting"
 }
 
 dependencies {

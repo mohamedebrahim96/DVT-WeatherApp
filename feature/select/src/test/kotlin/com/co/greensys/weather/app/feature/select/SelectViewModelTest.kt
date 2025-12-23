@@ -1,11 +1,11 @@
-package jp.co.greensys.weather.app.feature.select
+package com.dvt.greensys.weather.app.feature.select
 
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import jp.co.greensys.weather.app.core.common.result.Result
-import jp.co.greensys.weather.app.core.domain.usecase.GetForecastDataByNameUseCase
-import jp.co.greensys.weather.app.core.testing.util.MainDispatcherRule
+import com.dvt.greensys.weather.app.core.common.result.Result
+import com.dvt.greensys.weather.app.core.domain.usecase.GetForecastDataByNameUseCase
+import com.dvt.greensys.weather.app.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.UnconfinedTestDispatcher

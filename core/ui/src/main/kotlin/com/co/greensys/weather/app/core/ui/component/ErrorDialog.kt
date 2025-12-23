@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.ui.component
+package com.dvt.greensys.weather.app.core.ui.component
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
@@ -7,9 +7,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherTextButton
-import jp.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import jp.co.greensys.weather.app.core.ui.R
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherTextButton
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.ui.R
 
 @Composable
 fun ErrorDialog(

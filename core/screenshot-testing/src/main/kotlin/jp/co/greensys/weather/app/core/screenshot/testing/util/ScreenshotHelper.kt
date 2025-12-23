@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.screenshot.testing.util
+package com.dvt.greensys.weather.app.core.screenshot.testing.util
 
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,8 +19,8 @@ import com.github.takahirom.roborazzi.RoborazziOptions
 import com.github.takahirom.roborazzi.RoborazziOptions.CompareOptions
 import com.github.takahirom.roborazzi.RoborazziOptions.RecordOptions
 import com.github.takahirom.roborazzi.captureRoboImage
-import jp.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import jp.co.greensys.weather.app.core.ui.LocalTimeZone
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.ui.LocalTimeZone
 import kotlinx.datetime.TimeZone
 import org.robolectric.RuntimeEnvironment
 

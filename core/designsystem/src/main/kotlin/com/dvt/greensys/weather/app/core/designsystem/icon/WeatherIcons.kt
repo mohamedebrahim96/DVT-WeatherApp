@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app.core.designsystem.icon
+package com.dvt.greensys.weather.app.core.designsystem.icon
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack

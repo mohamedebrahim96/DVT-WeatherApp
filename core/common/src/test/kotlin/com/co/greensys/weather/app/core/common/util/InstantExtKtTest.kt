@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.common.util
+package com.dvt.greensys.weather.app.core.common.util
 
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone

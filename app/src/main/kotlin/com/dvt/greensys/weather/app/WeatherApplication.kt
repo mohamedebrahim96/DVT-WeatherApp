@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app
+package com.dvt.greensys.weather.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

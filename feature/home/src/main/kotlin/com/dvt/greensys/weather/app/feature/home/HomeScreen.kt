@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.feature.home
+package com.dvt.greensys.weather.app.feature.home
 
 import android.Manifest
 import android.content.Intent
@@ -7,20 +7,16 @@ import android.provider.Settings
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.WbSunny
@@ -59,18 +55,17 @@ import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.rememberMultiplePermissionsState
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherButton
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherLoading
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherSnackbar
-import jp.co.greensys.weather.app.core.designsystem.component.WeatherTopAppBar
-import jp.co.greensys.weather.app.core.designsystem.icon.WeatherIcons
-import jp.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import jp.co.greensys.weather.app.core.model.Coord
-import jp.co.greensys.weather.app.core.ui.component.DetailContent
-import jp.co.greensys.weather.app.core.ui.component.ErrorDialog
-import jp.co.greensys.weather.app.feature.home.preview.HomePreviewParameterProvider
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherButton
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherLoading
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherSnackbar
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherTopAppBar
+import com.dvt.greensys.weather.app.core.designsystem.icon.WeatherIcons
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.model.Coord
+import com.dvt.greensys.weather.app.core.ui.component.DetailContent
+import com.dvt.greensys.weather.app.core.ui.component.ErrorDialog
+import com.dvt.greensys.weather.app.feature.home.preview.HomePreviewParameterProvider
 import kotlinx.coroutines.launch
-import jp.co.greensys.weather.app.core.ui.R as UiR
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable

@@ -1,10 +1,10 @@
-package jp.co.greensys.weather.app.feature.select
+package com.dvt.greensys.weather.app.feature.select
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import dagger.hilt.android.testing.HiltTestApplication
-import jp.co.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
-import jp.co.greensys.weather.app.core.screenshot.testing.util.captureScreen
+import com.dvt.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
+import com.dvt.greensys.weather.app.core.screenshot.testing.util.captureScreen
 import org.junit.Rule
 import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith

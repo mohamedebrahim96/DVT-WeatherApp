@@ -1,7 +1,7 @@
-package com.co.greensys.weather.app.core.ui.mock
+package com.dvt.greensys.weather.app.core.ui.mock
 
-import com.co.greensys.weather.app.core.model.Forecast
-import com.co.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.model.Forecast
+import com.dvt.greensys.weather.app.core.model.ForecastData
 import kotlinx.datetime.Instant
 
 object PreviewForecastData {

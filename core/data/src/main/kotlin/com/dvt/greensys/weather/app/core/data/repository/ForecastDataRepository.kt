@@ -1,13 +1,13 @@
-package com.co.greensys.weather.app.core.data.repository
+package com.dvt.greensys.weather.app.core.data.repository
 
 import androidx.annotation.VisibleForTesting
-import com.co.greensys.weather.app.core.domain.repository.ForecastRepository
-import com.co.greensys.weather.app.core.model.Coord
-import com.co.greensys.weather.app.core.model.Forecast
-import com.co.greensys.weather.app.core.model.ForecastData
-import com.co.greensys.weather.app.core.network.WeatherNetworkDataSource
-import com.co.greensys.weather.app.core.network.model.NetworkForecast
-import com.co.greensys.weather.app.core.network.model.NetworkForecastData
+import com.dvt.greensys.weather.app.core.domain.repository.ForecastRepository
+import com.dvt.greensys.weather.app.core.model.Coord
+import com.dvt.greensys.weather.app.core.model.Forecast
+import com.dvt.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.network.WeatherNetworkDataSource
+import com.dvt.greensys.weather.app.core.network.model.NetworkForecast
+import com.dvt.greensys.weather.app.core.network.model.NetworkForecastData
 import kotlinx.datetime.Instant
 import javax.inject.Inject
 

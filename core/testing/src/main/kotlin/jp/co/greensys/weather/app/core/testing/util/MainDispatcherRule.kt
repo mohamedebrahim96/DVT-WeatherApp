@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.testing.util
+package com.dvt.greensys.weather.app.core.testing.util
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestDispatcher

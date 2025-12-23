@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app.core.designsystem
+package com.dvt.greensys.weather.app.core.designsystem
 
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.Icon
@@ -6,11 +6,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import dagger.hilt.android.testing.HiltTestApplication
-import com.co.greensys.weather.app.core.designsystem.component.WeatherButton
-import com.co.greensys.weather.app.core.designsystem.component.WeatherTextButton
-import com.co.greensys.weather.app.core.designsystem.icon.WeatherIcons
-import com.co.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
-import com.co.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherButton
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherTextButton
+import com.dvt.greensys.weather.app.core.designsystem.icon.WeatherIcons
+import com.dvt.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
+import com.dvt.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
 import org.junit.Rule
 import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith

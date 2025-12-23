@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.designsystem.theme
+package com.dvt.greensys.weather.app.core.designsystem.theme
 
 import android.os.Build
 import androidx.annotation.ChecksSdkIntAtLeast

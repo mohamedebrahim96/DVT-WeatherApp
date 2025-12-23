@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "jp.co.greensys.weather.app.feature.home"
+    namespace = "com.dvt.greensys.weather.app.feature.home"
 }
 
 dependencies {

@@ -1,9 +1,9 @@
-package jp.co.greensys.weather.app.feature.select.navigation
+package com.dvt.greensys.weather.app.feature.select.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import jp.co.greensys.weather.app.feature.select.SelectScreen
+import com.dvt.greensys.weather.app.feature.select.SelectScreen
 import kotlinx.serialization.Serializable
 
 @Serializable

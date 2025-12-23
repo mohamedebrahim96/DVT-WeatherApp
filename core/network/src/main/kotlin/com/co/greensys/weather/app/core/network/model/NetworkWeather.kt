@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.network.model
+package com.dvt.greensys.weather.app.core.network.model
 
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app.core.designsystem.theme
+package com.dvt.greensys.weather.app.core.designsystem.theme
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp

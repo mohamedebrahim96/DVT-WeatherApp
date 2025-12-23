@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app.core.designsystem
+package com.dvt.greensys.weather.app.core.designsystem
 
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.SnackbarData
@@ -7,9 +7,9 @@ import androidx.compose.material3.SnackbarVisuals
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import dagger.hilt.android.testing.HiltTestApplication
-import com.co.greensys.weather.app.core.designsystem.component.WeatherSnackbar
-import com.co.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
-import com.co.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
+import com.dvt.greensys.weather.app.core.designsystem.component.WeatherSnackbar
+import com.dvt.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
+import com.dvt.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
 import org.junit.Rule
 import org.junit.experimental.categories.Category
 import org.junit.runner.RunWith

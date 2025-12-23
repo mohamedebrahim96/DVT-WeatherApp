@@ -1,13 +1,13 @@
-package jp.co.greensys.weather.app.core.ui
+package com.dvt.greensys.weather.app.core.ui
 
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.Surface
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import dagger.hilt.android.testing.HiltTestApplication
-import jp.co.greensys.weather.app.core.model.Forecast
-import jp.co.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
-import jp.co.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
-import jp.co.greensys.weather.app.core.ui.component.PopChart
+import com.dvt.greensys.weather.app.core.model.Forecast
+import com.dvt.greensys.weather.app.core.screenshot.testing.category.ScreenshotTests
+import com.dvt.greensys.weather.app.core.screenshot.testing.util.captureMultiTheme
+import com.dvt.greensys.weather.app.core.ui.component.PopChart
 import kotlinx.datetime.Instant
 import org.junit.Rule
 import org.junit.experimental.categories.Category

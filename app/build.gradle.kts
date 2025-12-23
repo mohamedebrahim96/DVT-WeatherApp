@@ -1,4 +1,4 @@
-import jp.co.greensys.weather.app.BuildType
+import com.dvt.greensys.weather.app.BuildType
 
 plugins {
     alias(libs.plugins.weather.app.android.application)
@@ -9,10 +9,10 @@ plugins {
 }
 
 android {
-    namespace = "jp.co.greensys.weather.app"
+    namespace = "com.dvt.greensys.weather.app"
 
     defaultConfig {
-        applicationId = "jp.co.greensys.weather.app"
+        applicationId = "com.dvt.greensys.weather.app"
         versionCode = libs.versions.appVersionCode.get().toInt()
         versionName = libs.versions.appVersionName.get()
     }

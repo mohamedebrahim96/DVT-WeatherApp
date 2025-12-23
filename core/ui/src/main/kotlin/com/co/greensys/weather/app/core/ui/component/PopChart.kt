@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.ui.component
+package com.dvt.greensys.weather.app.core.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -23,13 +23,13 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.formatter.ValueFormatter
-import jp.co.greensys.weather.app.core.common.util.toString
-import jp.co.greensys.weather.app.core.designsystem.theme.Orange
-import jp.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import jp.co.greensys.weather.app.core.designsystem.theme.dimens
-import jp.co.greensys.weather.app.core.model.Forecast
-import jp.co.greensys.weather.app.core.ui.LocalTimeZone
-import jp.co.greensys.weather.app.core.ui.mock.PreviewForecastData
+import com.dvt.greensys.weather.app.core.common.util.toString
+import com.dvt.greensys.weather.app.core.designsystem.theme.Orange
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.designsystem.theme.dimens
+import com.dvt.greensys.weather.app.core.model.Forecast
+import com.dvt.greensys.weather.app.core.ui.LocalTimeZone
+import com.dvt.greensys.weather.app.core.ui.mock.PreviewForecastData
 
 @Composable
 fun PopChart(

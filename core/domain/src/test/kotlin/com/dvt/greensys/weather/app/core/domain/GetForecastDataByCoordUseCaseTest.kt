@@ -1,14 +1,14 @@
-package com.co.greensys.weather.app.core.domain
+package com.dvt.greensys.weather.app.core.domain
 
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
-import com.co.greensys.weather.app.core.common.result.Result
-import com.co.greensys.weather.app.core.domain.repository.ForecastRepository
-import com.co.greensys.weather.app.core.domain.usecase.GetForecastDataByCoordUseCase
-import com.co.greensys.weather.app.core.model.Coord
-import com.co.greensys.weather.app.core.model.ForecastData
-import com.co.greensys.weather.app.core.testing.util.MainDispatcherRule
+import com.dvt.greensys.weather.app.core.common.result.Result
+import com.dvt.greensys.weather.app.core.domain.repository.ForecastRepository
+import com.dvt.greensys.weather.app.core.domain.usecase.GetForecastDataByCoordUseCase
+import com.dvt.greensys.weather.app.core.model.Coord
+import com.dvt.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.testing.util.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import kotlin.test.Test

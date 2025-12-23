@@ -1,6 +1,6 @@
-package jp.co.greensys.weather.app.feature.select
+package com.dvt.greensys.weather.app.feature.select
 
-import jp.co.greensys.weather.app.core.model.ForecastData
+import com.dvt.greensys.weather.app.core.model.ForecastData
 
 sealed interface SelectUiState {
     data object Init : SelectUiState

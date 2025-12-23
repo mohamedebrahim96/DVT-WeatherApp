@@ -1,4 +1,4 @@
-package com.co.greensys.weather.app
+package com.dvt.greensys.weather.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,9 +10,9 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import dagger.hilt.android.AndroidEntryPoint
-import com.co.greensys.weather.app.core.designsystem.theme.WeatherTheme
-import com.co.greensys.weather.app.core.ui.LocalTimeZone
-import com.co.greensys.weather.app.ui.WeatherApp
+import com.dvt.greensys.weather.app.core.designsystem.theme.WeatherTheme
+import com.dvt.greensys.weather.app.core.ui.LocalTimeZone
+import com.dvt.greensys.weather.app.ui.WeatherApp
 import kotlinx.datetime.TimeZone
 
 @AndroidEntryPoint

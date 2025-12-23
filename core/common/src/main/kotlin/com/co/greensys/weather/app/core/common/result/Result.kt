@@ -1,4 +1,4 @@
-package jp.co.greensys.weather.app.core.common.result
+package com.dvt.greensys.weather.app.core.common.result
 
 sealed interface Result<out T> {
     data class Success<T>(val data: T) : Result<T>
