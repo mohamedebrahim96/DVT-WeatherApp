@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace = "jp.co.greensys.weather.app.core.network"
+    namespace = "com.dvt.greensys.weather.app.core.network"
 
     defaultConfig {
         buildConfigField("String", "WEATHER_API_BASE_URL", "\"https://api.openweathermap.org/\"")

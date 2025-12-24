@@ -1,3 +1,3 @@
-package jp.co.greensys.weather.app.core.screenshot.testing.category
+package com.dvt.greensys.weather.app.core.screenshot.testing.category
 
 interface ScreenshotTests
