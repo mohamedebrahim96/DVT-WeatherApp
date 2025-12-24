@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
@@ -50,9 +51,11 @@ import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
@@ -209,10 +212,7 @@ fun HomeScreen(
                 )
 
                 forecastDays.forEach { day ->
-                    ForecastDayCard(
-                        day = day,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
+                    ForecastDayCard(day = day)
                 }
             }
         }
@@ -248,54 +248,70 @@ fun HomeScreen(
 }
 
 @Composable
-private fun ForecastDayCard(
-    day: ForecastDayUi,
-    modifier: Modifier = Modifier,
-) {
+private fun ForecastDayCard(day: ForecastDayUi) {
     Card(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp) // Height set to 150dp as requested previously
-            .padding(vertical = 8.dp),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White.copy(alpha = 0.85f)
-        ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
+            .height(100.dp) // Adjusted height to match your visual
+            .padding(vertical = 4.dp),
+        shape = RoundedCornerShape(12.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.9f)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(24.dp), // Increased padding for a cleaner look
+                .padding(horizontal = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween // Pushes temperature to the end
+            horizontalArrangement = Arrangement.SpaceBetween //
         ) {
-            // Start of card: Day Name and Icon under each other
+            // Start: Day Name and Sun Icon under each other
             Column(
+                modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
             ) {
+                // Card Title Styling: 16px, SemiBold, Poppins
                 Text(
                     text = day.dayName,
-                    style = MaterialTheme.typography.titleLarge,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.Black
+                    color = Color(0xFF1B1C1E),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 24.sp
                 )
-
-                Icon(
-                    imageVector = Icons.Filled.WbSunny,
-                    contentDescription = "Sunny",
-                    tint = Color(0xFFFFC107),
-                    modifier = Modifier.size(48.dp)
-                )
+                Spacer(modifier = Modifier.height(8.dp))
+                // Sun Icon
+                Box(
+                    modifier = Modifier
+                        .size(32.dp)
+                        .padding(2.dp)
+                ) {
+                    // Using a Canvas or Image for the specific yellow gradient sun shown in image
+                    painterResource(id = R.drawable.ic_sun_yellow).let {
+                        // If you have a specific vector drawable for the yellow sun
+                        Icon(
+                            painter = it,
+                            contentDescription = null,
+                            tint = Color.Unspecified, // Keep original colors
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    } ?: Icon(
+                        imageVector = Icons.Default.WbSunny,
+                        contentDescription = null,
+                        tint = Color(0xFFFFC107),
+                        modifier = Modifier.fillMaxSize()
+                    )
+                }
             }
 
-            // End of card: Temperature
+            // End: Temperature Styling: 36px, Bold, Poppins
             Text(
                 text = day.temperature,
-                style = MaterialTheme.typography.headlineMedium, // Made larger to stand out
-                fontWeight = FontWeight.ExtraBold,
-                color = Color.Black
+                color = Color(0xFF1B1C1E),
+                fontSize = 36.sp,
+                fontWeight = FontWeight.Bold,
+                lineHeight = 44.sp,
+                textAlign = TextAlign.End
             )
         }
     }

@@ -6,6 +6,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.PlainTooltip
 import androidx.compose.material3.Text
 import androidx.compose.material3.TooltipBox
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -29,6 +31,7 @@ import androidx.compose.ui.unit.IntRect
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.PopupPositionProvider
 import com.dvt.greensys.weather.app.core.designsystem.icon.WeatherIcons
 import com.dvt.greensys.weather.app.core.designsystem.theme.Orange
@@ -53,8 +56,9 @@ fun WeatherTopAppBar(
     modifier: Modifier = Modifier,
     navigationIcon: ActionIconSet? = null,
     actionIcon: ActionIconSet? = null,
+    // Set default to transparent to match the design
     colors: TopAppBarColors = TopAppBarDefaults.topAppBarColors(
-        containerColor = Orange,
+        containerColor = Color.Transparent,
         navigationIconContentColor = Color.White,
         titleContentColor = Color.White,
         actionIconContentColor = Color.White,
@@ -63,7 +67,19 @@ fun WeatherTopAppBar(
     val expandedDropdownMenu = remember { mutableStateOf(value = false) }
 
     TopAppBar(
-        title = { titleRes?.let { id -> Text(text = stringResource(id = id)) } },
+        title = {
+            titleRes?.let { id ->
+                Text(
+                    text = stringResource(id = id),
+                    // Apply Poppins Bold 18px styling from design
+                    style = MaterialTheme.typography.titleLarge.copy(
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        lineHeight = 28.sp
+                    )
+                )
+            }
+        },
         navigationIcon = {
             navigationIcon?.let {
                 IconButton(onClick = navigationIcon.onClick) {
