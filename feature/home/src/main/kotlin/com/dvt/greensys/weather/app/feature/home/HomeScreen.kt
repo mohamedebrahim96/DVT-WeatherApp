@@ -33,6 +33,7 @@ import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -162,20 +163,25 @@ fun HomeScreen(
 
     LocationPermissionEffect(locationPermissionsState = locationPermissionsState)
 
-    // Root Box to stack the Background Image
     Box(modifier = modifier.fillMaxSize()) {
-        // BACKGROUND IMAGE
+        // BACKGROUND IMAGE - Takes the whole screen including under the toolbar
         Image(
-            painter = painterResource(id = R.drawable.sunny_bg), // Matches your filename in drawable
+            painter = painterResource(id = R.drawable.sunny_bg),
             contentDescription = null,
             modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.Crop // This fills the screen and crops the edges
+            contentScale = ContentScale.Crop
         )
 
         Scaffold(
             topBar = {
                 WeatherTopAppBar(
                     titleRes = R.string.home_title,
+                    // Making the Toolbar background transparent
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = Color.Transparent,
+                        scrolledContainerColor = Color.Transparent,
+                        titleContentColor = Color.White // Ensuring title is readable
+                    )
                 )
             },
             snackbarHost = {
@@ -184,7 +190,7 @@ fun HomeScreen(
                     snackbar = { WeatherSnackbar(snackbarData = it) },
                 )
             },
-            containerColor = Color.Transparent, // Make Scaffold transparent to see image
+            containerColor = Color.Transparent, // Ensures Scaffold doesn't block the image
         ) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -210,7 +216,6 @@ fun HomeScreen(
         }
     }
 
-    // State handling UI
     when (uiState) {
         is HomeUiState.Init -> Unit
         is HomeUiState.Loading -> WeatherLoading(
@@ -250,9 +255,8 @@ private fun ForecastDayCard(
             .fillMaxWidth()
             .padding(vertical = 6.dp),
         shape = RoundedCornerShape(16.dp),
-        // Adding slight alpha/transparency to the cards looks great on backgrounds
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.9f)),
-        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
+        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.85f)),
+        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Row(
             modifier = Modifier
