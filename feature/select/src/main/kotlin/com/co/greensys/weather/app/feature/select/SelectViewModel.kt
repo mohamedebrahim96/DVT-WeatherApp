@@ -34,10 +34,10 @@ class SelectViewModel @Inject constructor(
     )
 
     fun getForecastData(cityName: String) {
-        viewModelScope.launch {
-            forecastData.value = Result.Loading
-            forecastData.value = getForecastDataByNameUseCase(cityName = cityName)
-        }
+//        viewModelScope.launch {
+//            forecastData.value = Result.Loading
+//            forecastData.value = getForecastDataByNameUseCase(cityName = cityName)
+//        }
     }
 
     fun clearForecastData() {

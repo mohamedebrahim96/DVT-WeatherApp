@@ -2,6 +2,7 @@ package com.dvt.greensys.weather.app.core.network.retrofit
 
 import com.dvt.greensys.weather.app.core.network.BuildConfig
 import com.dvt.greensys.weather.app.core.network.WeatherNetworkDataSource
+import com.dvt.greensys.weather.app.core.network.model.ForecastData
 import com.dvt.greensys.weather.app.core.network.model.NetworkForecastData
 import kotlinx.serialization.json.Json
 import okhttp3.Call
@@ -12,16 +13,9 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlinx.serialization.InternalSerializationApi // Import this
 
 private interface RetrofitWeatherNetworkApi {
-    @GET("data/2.5/forecast")
-    suspend fun fetchForecastByName(
-        @Query("q") cityName: String,
-        @Query("appid") appid: String = BuildConfig.WEATHER_API_KEY,
-        @Query("units") units: String? = "metric",
-        @Query("lang") lang: String = "ja",
-        @Query("cnt") cnt: Int = 8,
-    ): NetworkForecastData
 
     @GET("data/2.5/forecast")
     suspend fun fetchForecastByCoord(
@@ -30,10 +24,12 @@ private interface RetrofitWeatherNetworkApi {
         @Query("appid") appid: String = BuildConfig.WEATHER_API_KEY,
         @Query("units") units: String? = "metric",
         @Query("lang") lang: String = "en",
-        @Query("cnt") cnt: Int = 8,
-    ): NetworkForecastData
+        // cnt removed to default to 40 timestamps (5 days)
+    ): ForecastData
 }
 
+
+@OptIn(InternalSerializationApi::class)
 @Singleton
 internal class RetrofitWeatherNetwork @Inject constructor(
     networkJson: Json,
@@ -49,9 +45,7 @@ internal class RetrofitWeatherNetwork @Inject constructor(
             .build()
             .create(RetrofitWeatherNetworkApi::class.java)
 
-    override suspend fun fetchForecastByName(cityName: String): NetworkForecastData =
-        networkApi.fetchForecastByName(cityName = cityName)
 
-    override suspend fun fetchForecastByCoord(lat: Double, lon: Double): NetworkForecastData =
+    override suspend fun fetchForecastByCoord(lat: Double, lon: Double): ForecastData =
         networkApi.fetchForecastByCoord(lat = lat, lon = lon)
 }

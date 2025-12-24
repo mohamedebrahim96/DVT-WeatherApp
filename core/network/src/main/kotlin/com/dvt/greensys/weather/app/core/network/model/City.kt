@@ -1,14 +1,8 @@
-package com.dvt.greensys.weather.app.core.model
+package com.dvt.greensys.weather.app.core.network.model
 
+import kotlinx.serialization.Serializable
 
-data class ForecastData(
-    val cod: String,
-    val message: Int,
-    val cnt: Int,
-    val list: List<ForecastItem>,
-    val city: City,
-)
-
+@Serializable
 data class City(
     val id: Int,
     val name: String,

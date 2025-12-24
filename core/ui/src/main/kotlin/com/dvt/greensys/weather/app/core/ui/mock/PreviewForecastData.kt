@@ -1,78 +1,59 @@
 package com.dvt.greensys.weather.app.core.ui.mock
 
-import com.dvt.greensys.weather.app.core.model.Forecast
-import com.dvt.greensys.weather.app.core.model.ForecastData
-import kotlinx.datetime.Instant
+import com.dvt.greensys.weather.app.core.model.*
 
 object PreviewForecastData {
+    // 1. Create a dummy City
+    private val dummyCity = City(
+        id = 1,
+        name = "Dubai",
+        coord = Coord(lat = 25.2, lon = 55.2),
+        country = "AE",
+        population = 3000000,
+        timezone = 14400,
+        sunrise = 1600000000L,
+        sunset = 1600040000L
+    )
+
+    // 2. Create dummy List items
+    private fun createDummyItem(dt: Long, temp: Double, icon: String): ForecastItem {
+        return ForecastItem(
+            dt = dt,
+            main = Main(
+                temp = temp,
+                feelsLike = temp + 2,
+                tempMin = temp - 2,
+                tempMax = temp + 5, // Used in UI
+                pressure = 1012,
+                seaLevel = 1012,
+                grndLevel = 1000,
+                humidity = 40, // Used in UI
+                tempKf = 0.0
+            ),
+            weather = listOf(
+                Weather(id = 800, main = "Clear", description = "clear sky", icon = icon)
+            ),
+            clouds = Clouds(all = 0),
+            wind = Wind(speed = 5.0, deg = 120, gust = 7.0),
+            visibility = 10000,
+            pop = 0.0,
+            sys = Sys(pod = "d"),
+            dt_txt = "2025-01-01 12:00:00"
+        )
+    }
+
+    // 3. Assemble the full ForecastData object
     val default = ForecastData(
-        cityName = "東京都",
-        date = Instant.parse("2024-09-09T03:00:00Z"),
-        forecastList = listOf(
-            Forecast(
-                date = Instant.parse("2024-09-09T03:00:00Z"),
-                maxTemp = 31.82f,
-                minTemp = 30.27f,
-                humidity = 67,
-                iconId = "02d",
-                pop = 0.38f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-09T06:00:00Z"),
-                maxTemp = 32.26f,
-                minTemp = 31.34f,
-                humidity = 58,
-                iconId = "02d",
-                pop = 0.39f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-09T09:00:00Z"),
-                maxTemp = 30.44f,
-                minTemp = 30.44f,
-                humidity = 58,
-                iconId = "04n",
-                pop = 0.31f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-09T12:00:00Z"),
-                maxTemp = 28.35f,
-                minTemp = 28.35f,
-                humidity = 69,
-                iconId = "10n",
-                pop = 0.55f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-09T15:00:00Z"),
-                maxTemp = 27.31f,
-                minTemp = 27.31f,
-                humidity = 73,
-                iconId = "10n",
-                pop = 0.88f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-09T18:00:00Z"),
-                maxTemp = 26.92f,
-                minTemp = 26.92f,
-                humidity = 75,
-                iconId = "10n",
-                pop = 0.91f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-09T21:00:00Z"),
-                maxTemp = 26.3f,
-                minTemp = 26.3f,
-                humidity = 80,
-                iconId = "10d",
-                pop = 0.21f,
-            ),
-            Forecast(
-                date = Instant.parse("2024-09-10T00:00:00Z"),
-                maxTemp = 28.47f,
-                minTemp = 28.47f,
-                humidity = 69,
-                iconId = "02d",
-                pop = 0.06f,
-            ),
+        cod = "200",
+        message = 0,
+        cnt = 5,
+        list = listOf(
+            createDummyItem(1700000000L, 25.0, "01d"),
+            createDummyItem(1700010800L, 27.0, "02d"),
+            createDummyItem(1700021600L, 22.0, "03d"),
+            createDummyItem(1700032400L, 21.0, "04d"),
+            createDummyItem(1700043200L, 20.0, "09d")
         ),
+        city = dummyCity
     )
 }
