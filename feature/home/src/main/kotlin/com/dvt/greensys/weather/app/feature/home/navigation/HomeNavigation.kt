@@ -14,7 +14,7 @@ fun NavGraphBuilder.homeScreen(
 ) {
     composable<HomeRoute> {
         HomeScreen(
-            navigateToSelect = navigateToSelect,
+            navigateToSelect = {},
             navigateToOss = navigateToOss,
         )
     }

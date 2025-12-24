@@ -70,7 +70,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 internal fun HomeScreen(
-    navigateToSelect: () -> Unit,
+    navigateToSelect: () -> Unit, // Keep for navigation logic, but not used in UI below
     navigateToOss: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
@@ -90,7 +90,6 @@ internal fun HomeScreen(
         uiState = uiState,
         locationPermissionsState = locationPermissionsState,
         onOssClick = navigateToOss,
-        onSelectClick = navigateToSelect,
         onLocationClick = { snackbarHostState ->
             val anyPermissionsGranted =
                 locationPermissionsState.revokedPermissions.size < locationPermissionsState.permissions.size
@@ -135,6 +134,7 @@ private data class ForecastDayUi(
     val dayName: String,
     val temperature: String,
 )
+
 private val forecastDays = listOf(
     ForecastDayUi("Monday", "32°C"),
     ForecastDayUi("Tuesday", "30°C"),
@@ -142,19 +142,18 @@ private val forecastDays = listOf(
     ForecastDayUi("Thursday", "31°C"),
     ForecastDayUi("Friday", "33°C"),
 )
+
 @OptIn(ExperimentalPermissionsApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
     uiState: HomeUiState,
     locationPermissionsState: MultiplePermissionsState,
     onOssClick: () -> Unit,
-    onSelectClick: () -> Unit,
     onLocationClick: (snackbarHostState: SnackbarHostState) -> Unit,
     onBottomSheetDismissRequest: () -> Unit,
     onErrorDialogOkClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // status バーを考慮したボトムシート用の padding
     val bottomSheetPaddingValues = WindowInsets.safeDrawing.only(sides = WindowInsetsSides.Top).asPaddingValues()
     val snackbarHostState = remember { SnackbarHostState() }
 
@@ -174,46 +173,38 @@ fun HomeScreen(
         },
         modifier = modifier,
     ) { innerPadding ->
-        Box(
-            contentAlignment = Alignment.TopCenter,
+        Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(paddingValues = innerPadding),
+                .padding(innerPadding)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Column(modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)   // system / top bar
-                .padding(10.dp) ) {
-                WeatherButton(
-                    onClick = onSelectClick,
-                    text = { Text(text = stringResource(id = R.string.home_to_select)) },
-                    leadingIcon = { Icon(imageVector = WeatherIcons.List, contentDescription = null) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                WeatherButton(
-                    onClick = { onLocationClick(snackbarHostState) },
-                    text = { Text(text = stringResource(id = R.string.home_to_location)) },
-                    leadingIcon = { Icon(imageVector = WeatherIcons.Gps, contentDescription = null) },
-                    modifier = Modifier.fillMaxWidth(),
-                )
+            // ONLY ONE BUTTON REMAINS HERE
+            WeatherButton(
+                onClick = { onLocationClick(snackbarHostState) },
+                text = { Text(text = stringResource(id = R.string.home_to_location)) },
+                leadingIcon = { Icon(imageVector = WeatherIcons.Gps, contentDescription = null) },
+                modifier = Modifier.fillMaxWidth(),
+            )
 
-                forecastDays.forEach { day ->
-                    ForecastDayCard(
-                        day = day,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                }
+            // Forecast List
+            forecastDays.forEach { day ->
+                ForecastDayCard(
+                    day = day,
+                    modifier = Modifier.fillMaxWidth(),
+                )
             }
         }
     }
 
+    // State handling (Loading, Success, Error)
     when (uiState) {
-        is HomeUiState.Init -> Unit // no-np
+        is HomeUiState.Init -> Unit
         is HomeUiState.Loading -> WeatherLoading(
             hasScrim = true,
             modifier = Modifier.fillMaxSize(),
         )
-
         is HomeUiState.Success -> ModalBottomSheet(
             onDismissRequest = onBottomSheetDismissRequest,
             containerColor = MaterialTheme.colorScheme.background,
@@ -224,13 +215,11 @@ fun HomeScreen(
                 modifier = Modifier.fillMaxSize(),
             )
         }
-
         is HomeUiState.NetworkError -> ErrorDialog(
             onDismissRequest = onErrorDialogOkClick,
             title = stringResource(id = R.string.home_error_loading_title),
             text = stringResource(id = R.string.home_error_loading_message),
         )
-
         is HomeUiState.LocationError -> ErrorDialog(
             onDismissRequest = onErrorDialogOkClick,
             title = stringResource(id = R.string.home_location_error_title),
@@ -249,12 +238,8 @@ private fun ForecastDayCard(
             .fillMaxWidth()
             .padding(vertical = 6.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
-        ),
+        colors = CardDefaults.cardColors(containerColor = Color.White),
+        elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
     ) {
         Row(
             modifier = Modifier
@@ -268,14 +253,12 @@ private fun ForecastDayCard(
                 style = MaterialTheme.typography.titleMedium,
                 color = Color.Black
             )
-
             Icon(
                 imageVector = Icons.Filled.WbSunny,
                 contentDescription = "Sunny",
                 tint = Color(0xFFFFC107),
                 modifier = Modifier.size(28.dp),
             )
-
             Text(
                 text = day.temperature,
                 style = MaterialTheme.typography.titleMedium,
@@ -286,17 +269,11 @@ private fun ForecastDayCard(
     }
 }
 
-
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
-private fun LocationPermissionEffect(
-    locationPermissionsState: MultiplePermissionsState,
-) {
+private fun LocationPermissionEffect(locationPermissionsState: MultiplePermissionsState) {
     if (LocalInspectionMode.current) return
-
-    // 全て許可されていない場合のみ
-    val allPermissionsRevoked =
-        locationPermissionsState.permissions.size == locationPermissionsState.revokedPermissions.size
+    val allPermissionsRevoked = locationPermissionsState.permissions.size == locationPermissionsState.revokedPermissions.size
     LaunchedEffect(locationPermissionsState) {
         if (allPermissionsRevoked) {
             locationPermissionsState.launchMultiplePermissionRequest()
@@ -312,18 +289,13 @@ private fun getLastLocation(
     fusedLocationProviderClient.lastLocation
         .addOnSuccessListener { location ->
             try {
-                // location が null の場合があるため try catch で囲む
                 onSuccess(Coord(lat = location.latitude, lon = location.longitude))
             } catch (e: Exception) {
                 onFailure(e)
             }
         }
-        .addOnFailureListener { exception ->
-            onFailure(exception)
-        }
-        .addOnCanceledListener {
-            onFailure(null)
-        }
+        .addOnFailureListener { exception -> onFailure(exception) }
+        .addOnCanceledListener { onFailure(null) }
 }
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -338,7 +310,6 @@ private fun HomeScreenPreview(
             uiState = uiState,
             locationPermissionsState = DummyLocationPermissionsState,
             onOssClick = {},
-            onSelectClick = {},
             onLocationClick = {},
             onBottomSheetDismissRequest = {},
             onErrorDialogOkClick = {},
