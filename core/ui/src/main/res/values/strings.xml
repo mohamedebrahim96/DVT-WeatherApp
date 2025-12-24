@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_ok">OK</string>
+    <string name="ui_full_date_format">yyyy-MM-dd</string>
+    <string name="ui_time_format">HH:mm</string>
+    <string name="ui_tomorrow_date_format">dd</string>
+    <string name="ui_pop">Precipitation Probability</string>
+    <string name="ui_max_temp">Max Temp: %.1f℃</string>
+    <string name="ui_min_temp">Min Temp: %.1f℃</string>
+    <string name="ui_humidity">Humidity: %d%%</string>
+    <string name="ui_error_loading_title">Loading Failed</string>
+    <string name="ui_error_loading_message">Failed to load data.</string>
+    <string name="ui_oss">Open Source Licenses</string>
+
+    <string name="ui_content_description_back">Back</string>
+    <string name="ui_content_description_menu">Open menu</string>
+</resources>

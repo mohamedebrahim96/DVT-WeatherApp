@@ -1,47 +1,68 @@
+import com.dvt.greensys.weather.app.BuildType
+
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.weather.app.android.application)
+    alias(libs.plugins.weather.app.android.application.compose)
+    alias(libs.plugins.weather.app.android.application.jacoco)
+    alias(libs.plugins.weather.app.hilt)
+    alias(libs.plugins.google.oss.licenses)
 }
 
 android {
-    namespace = "com.dvt.weatherapp"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "com.dvt.greensys.weather.app"
 
     defaultConfig {
-        applicationId = "com.dvt.weatherapp"
-        minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        applicationId = "com.dvt.greensys.weather.app"
+        versionCode = libs.versions.appVersionCode.get().toInt()
+        versionName = libs.versions.appVersionName.get()
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix = BuildType.DEBUG.applicationIdSuffix
+        }
         release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            isMinifyEnabled = true
+            // fake signingConfig
+            signingConfig = signingConfigs.named("debug").get()
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+
+    packaging {
+        resources {
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+        }
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
+    buildFeatures { buildConfig = true }
 }
 
 dependencies {
-    implementation(libs.androidx.core.ktx)
+    implementation(projects.core.common)
+    implementation(projects.core.data)
+    implementation(projects.core.designsystem)
+    implementation(projects.core.domain)
+    implementation(projects.core.ui)
+    implementation(projects.feature.home)
+    implementation(projects.feature.select)
+
+    implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.profileinstaller)
+    implementation(libs.google.oss.licenses)
+    implementation(libs.timber)
+
+    debugImplementation(libs.leakcanary)
+
+    kspTest(libs.hilt.compiler)
+}
+
+dependencyGuard {
+    configuration("releaseRuntimeClasspath")
 }
