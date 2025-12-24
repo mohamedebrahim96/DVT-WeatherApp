@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.provider.Settings
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -40,8 +41,10 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
@@ -70,7 +73,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 internal fun HomeScreen(
-    navigateToSelect: () -> Unit, // Keep for navigation logic, but not used in UI below
+    navigateToSelect: () -> Unit,
     navigateToOss: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: HomeViewModel = hiltViewModel(),
@@ -159,46 +162,55 @@ fun HomeScreen(
 
     LocationPermissionEffect(locationPermissionsState = locationPermissionsState)
 
-    Scaffold(
-        topBar = {
-            WeatherTopAppBar(
-                titleRes = R.string.home_title,
-            )
-        },
-        snackbarHost = {
-            SnackbarHost(
-                hostState = snackbarHostState,
-                snackbar = { WeatherSnackbar(snackbarData = it) },
-            )
-        },
-        modifier = modifier,
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            // ONLY ONE BUTTON REMAINS HERE
-            WeatherButton(
-                onClick = { onLocationClick(snackbarHostState) },
-                text = { Text(text = stringResource(id = R.string.home_to_location)) },
-                leadingIcon = { Icon(imageVector = WeatherIcons.Gps, contentDescription = null) },
-                modifier = Modifier.fillMaxWidth(),
-            )
+    // Root Box to stack the Background Image
+    Box(modifier = modifier.fillMaxSize()) {
+        // BACKGROUND IMAGE
+        Image(
+            painter = painterResource(id = R.drawable.sunny_bg), // Matches your filename in drawable
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop // This fills the screen and crops the edges
+        )
 
-            // Forecast List
-            forecastDays.forEach { day ->
-                ForecastDayCard(
-                    day = day,
+        Scaffold(
+            topBar = {
+                WeatherTopAppBar(
+                    titleRes = R.string.home_title,
+                )
+            },
+            snackbarHost = {
+                SnackbarHost(
+                    hostState = snackbarHostState,
+                    snackbar = { WeatherSnackbar(snackbarData = it) },
+                )
+            },
+            containerColor = Color.Transparent, // Make Scaffold transparent to see image
+        ) { innerPadding ->
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                WeatherButton(
+                    onClick = { onLocationClick(snackbarHostState) },
+                    text = { Text(text = stringResource(id = R.string.home_to_location)) },
+                    leadingIcon = { Icon(imageVector = WeatherIcons.Gps, contentDescription = null) },
                     modifier = Modifier.fillMaxWidth(),
                 )
+
+                forecastDays.forEach { day ->
+                    ForecastDayCard(
+                        day = day,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                }
             }
         }
     }
 
-    // State handling (Loading, Success, Error)
+    // State handling UI
     when (uiState) {
         is HomeUiState.Init -> Unit
         is HomeUiState.Loading -> WeatherLoading(
@@ -238,7 +250,8 @@ private fun ForecastDayCard(
             .fillMaxWidth()
             .padding(vertical = 6.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White),
+        // Adding slight alpha/transparency to the cards looks great on backgrounds
+        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.9f)),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp),
     ) {
         Row(
