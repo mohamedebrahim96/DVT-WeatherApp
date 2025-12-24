@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
@@ -41,6 +42,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -253,33 +255,46 @@ private fun ForecastDayCard(
     Card(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 6.dp),
+            .height(100.dp) // Height set to 150dp as requested previously
+            .padding(vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.85f)),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White.copy(alpha = 0.85f)
+        ),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+                .fillMaxSize()
+                .padding(24.dp), // Increased padding for a cleaner look
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.SpaceBetween // Pushes temperature to the end
         ) {
-            Text(
-                text = day.dayName,
-                style = MaterialTheme.typography.titleMedium,
-                color = Color.Black
-            )
-            Icon(
-                imageVector = Icons.Filled.WbSunny,
-                contentDescription = "Sunny",
-                tint = Color(0xFFFFC107),
-                modifier = Modifier.size(28.dp),
-            )
+            // Start of card: Day Name and Icon under each other
+            Column(
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.Start
+            ) {
+                Text(
+                    text = day.dayName,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
+
+                Icon(
+                    imageVector = Icons.Filled.WbSunny,
+                    contentDescription = "Sunny",
+                    tint = Color(0xFFFFC107),
+                    modifier = Modifier.size(48.dp)
+                )
+            }
+
+            // End of card: Temperature
             Text(
                 text = day.temperature,
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.headlineMedium, // Made larger to stand out
+                fontWeight = FontWeight.ExtraBold,
                 color = Color.Black
             )
         }
