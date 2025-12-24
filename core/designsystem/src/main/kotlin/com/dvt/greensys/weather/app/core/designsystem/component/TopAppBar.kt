@@ -70,13 +70,9 @@ fun WeatherTopAppBar(
         title = {
             titleRes?.let { id ->
                 Text(
-                    text = stringResource(id = id),
-                    // Apply Poppins Bold 18px styling from design
-                    style = MaterialTheme.typography.titleLarge.copy(
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 18.sp,
-                        lineHeight = 28.sp
-                    )
+                    text = stringResource(id = titleRes),
+                    style = MaterialTheme.typography.titleLarge, // This now points to your Poppins 18px Bold
+                    color = colors.titleContentColor // Ensures it respects the Scaffold/TopAppBar colors
                 )
             }
         },

@@ -145,11 +145,11 @@ private data class ForecastDayUi(
 )
 
 private val forecastDays = listOf(
-    ForecastDayUi("Monday", "32°C"),
-    ForecastDayUi("Tuesday", "30°C"),
-    ForecastDayUi("Wednesday", "29°C"),
-    ForecastDayUi("Thursday", "31°C"),
-    ForecastDayUi("Friday", "33°C"),
+    ForecastDayUi("Monday", "22°"),
+    ForecastDayUi("Tuesday", "25°"),
+    ForecastDayUi("Wednesday", "23°"),
+    ForecastDayUi("Thursday", "29°"),
+    ForecastDayUi("Friday", "27°"),
 )
 
 @OptIn(ExperimentalPermissionsApi::class, ExperimentalMaterial3Api::class)
@@ -208,7 +208,7 @@ fun HomeScreen(
                     onClick = { onLocationClick(snackbarHostState) },
                     text = { Text(text = stringResource(id = R.string.home_to_location)) },
                     leadingIcon = { Icon(imageVector = WeatherIcons.Gps, contentDescription = null) },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier.fillMaxWidth().alpha(0f),
                 )
 
                 forecastDays.forEach { day ->
@@ -252,7 +252,7 @@ private fun ForecastDayCard(day: ForecastDayUi) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp) // Adjusted height to match your visual
+            .height(100.dp)
             .padding(vertical = 4.dp),
         shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = Color.White.copy(alpha = 0.9f)),
@@ -263,54 +263,40 @@ private fun ForecastDayCard(day: ForecastDayUi) {
                 .fillMaxSize()
                 .padding(horizontal = 20.dp),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween //
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Start: Day Name and Sun Icon under each other
             Column(
                 modifier = Modifier.weight(1f),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.Start
             ) {
-                // Card Title Styling: 16px, SemiBold, Poppins
                 Text(
                     text = day.dayName,
                     color = Color(0xFF1B1C1E),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    lineHeight = 24.sp
+                    style = MaterialTheme.typography.titleMedium
                 )
-                Spacer(modifier = Modifier.height(8.dp))
-                // Sun Icon
+
+                Spacer(modifier = Modifier.height(4.dp)) // Reduced spacer for better balance
+
+                // Increased size from 32.dp to 48.dp
                 Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .padding(2.dp)
+                    modifier = Modifier.size(48.dp)
                 ) {
-                    // Using a Canvas or Image for the specific yellow gradient sun shown in image
-                    painterResource(id = R.drawable.ic_sun_yellow).let {
-                        // If you have a specific vector drawable for the yellow sun
-                        Icon(
-                            painter = it,
-                            contentDescription = null,
-                            tint = Color.Unspecified, // Keep original colors
-                            modifier = Modifier.fillMaxSize()
-                        )
-                    } ?: Icon(
-                        imageVector = Icons.Default.WbSunny,
+                    val customPainter = painterResource(id = R.drawable.ic_sun_yellow)
+
+                    Icon(
+                        painter = customPainter,
                         contentDescription = null,
-                        tint = Color(0xFFFFC107),
+                        tint = Color.Unspecified,
                         modifier = Modifier.fillMaxSize()
                     )
                 }
             }
 
-            // End: Temperature Styling: 36px, Bold, Poppins
             Text(
                 text = day.temperature,
                 color = Color(0xFF1B1C1E),
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Bold,
-                lineHeight = 44.sp,
+                style = MaterialTheme.typography.displayLarge,
                 textAlign = TextAlign.End
             )
         }

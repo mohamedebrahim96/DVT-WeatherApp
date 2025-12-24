@@ -17,25 +17,36 @@ val Poppins = FontFamily(
 )
 
 val Typography = Typography(
-    // Title styling from your image (18px, Bold)
+    // 1. Headline/Titles
     titleLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
         lineHeight = 28.sp
     ),
-    // Weather Card title (16px, SemiBold)
     titleMedium = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         lineHeight = 24.sp
     ),
-    // Temperature styling (36px, Bold)
+    // 2. Main Temperature Display
     displayLarge = TextStyle(
         fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
         fontSize = 36.sp,
         lineHeight = 44.sp
+    ),
+    // 3. DEFAULT TEXT (Critical for all generic Text() widgets)
+    bodyLarge = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp
+    ),
+    labelLarge = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp
     )
 )
