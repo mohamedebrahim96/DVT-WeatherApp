@@ -11,7 +11,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
-// 引数を設定することでテーマをカスタムできる
+
 val LightColorScheme = lightColorScheme(
     primary = Orange,
 )
@@ -36,7 +36,7 @@ fun WeatherTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = WeatherTypography,
+        typography = Typography,
         content = content,
     )
 }
