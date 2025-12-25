@@ -83,6 +83,11 @@ The project is modularized to support scalability and parallel builds:
 - **:feature**: Contains specific feature modules (e.g., `:feature:weather`).
 - **:build-logic**: Custom Gradle convention plugins for consistent build configurations across modules.
 
+## MAD Score
+![summary](https://user-images.githubusercontent.com/24237865/102366914-84f6b000-3ffc-11eb-8d49-b20694239782.png)
+![kotlin](https://user-images.githubusercontent.com/24237865/102366932-8a53fa80-3ffc-11eb-8131-fd6745a6f079.png)
+
+
 ## 🌦️ Open API
 
 The app uses the OpenWeatherMap API to fetch current weather conditions and forecasts.
