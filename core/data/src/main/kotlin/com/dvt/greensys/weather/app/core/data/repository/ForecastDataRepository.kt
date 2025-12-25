@@ -17,6 +17,7 @@ import com.dvt.greensys.weather.app.core.model.Clouds
 import com.dvt.greensys.weather.app.core.model.Wind
 import com.dvt.greensys.weather.app.core.model.Sys
 
+
 internal class ForecastDataRepository @Inject constructor(
     private val network: WeatherNetworkDataSource,
 ) : ForecastRepository {
